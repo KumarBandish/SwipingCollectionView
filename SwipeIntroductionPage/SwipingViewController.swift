@@ -9,16 +9,17 @@
 import UIKit
 
 class SwipingViewController: UIViewController {
-    
+    //MARK: Outlets
     @IBOutlet weak var swipingCollectionView: UICollectionView!
     @IBOutlet weak var swipingPageControl: UIPageControl!
-  
+    //MARK: Property
     let swipingDataSource = ["a", "b", "c"]
+    //MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
-
+//MARK: UICollectionViewDataSource
 extension SwipingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return swipingDataSource.count
@@ -30,13 +31,13 @@ extension SwipingViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
+//MARK: UICollectionViewDelegate
 extension SwipingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         swipingPageControl.currentPage = indexPath.row
     }
 }
-
+//MARK: UICollectionViewDelegateFlowLayout
 extension SwipingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
